@@ -112,4 +112,17 @@ CTL_AUTOTP(TAG);
 输出如下：`[]`中的是这行代码所在的文件名，`()`里是行号
 
 ![image-20230611000256192](README.assets/image-20230611000256192.png)
-
+## 5 输出自定义数据，需要为你的数据结构重载“<<”
+以std::vector为例
+```C++
+template<typename T>
+friend ostream &operator>>( ostream &output, vector<T> &v )
+{ 
+    for(T&&a:v){
+        output<<a;
+    }
+    output<<endl;
+    return output;            
+}
+```
+可以专门用一个头文件来存储所有输出运算符的重定义，以方便管理。
