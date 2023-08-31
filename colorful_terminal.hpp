@@ -280,11 +280,11 @@ namespace ctl {
        private:
         value_v_buff vvb;
         std::vector<var_info> var_infos;
-        static const std::unordered_map<std::string, std::string> default_abbrev;
+        std::unordered_map<std::string, std::string> default_abbrev = {
+            {"std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >",
+             "string"},
+            {"std::vector<double, std::allocator<double> >", "vector<double>"},
+            {"Eigen::Matrix<double, 3, 3, 0, 3, 3>", "Eigen::Matrix3d"}};
     };
-    const std::unordered_map<std::string, std::string> default_abbrev = {
-        {"std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >",
-         "string"},
-        {"std::vector<double, std::allocator<double> >", "vector<double>"},
-        {"Eigen::Matrix<double, 3, 3, 0, 3, 3>", "Eigen::Matrix3d"}};
+
 }  // namespace ctl
